@@ -16,6 +16,10 @@ class GameApp():
 
 		# GameObjects
 		self.player = Player(self.all_sprites) # essa classe Player é do arquivo Player em: data.lib 
+		
+		self.obj = GameObject(group=self.all_sprites, color=(0, 0, 255))
+
+		#self.obj.parent(self.player, -32, 0)
 		#----------------
 
 		self.gameLoop = True
@@ -35,11 +39,15 @@ class GameApp():
 
 	def update(self):
 		pygame.display.update()
+
+		self.obj.rect.x = int(self.obj.position.x)
+		self.obj.rect.y = int(self.obj.position.y)
+
 		self.all_sprites.update()
 
 
 	def render(self):
-		self.display.fill((255, 255, 255))
+		self.display.fill((0, 0, 0))
 		# Desenhando as sprites do grupo all_sprites
 		self.all_sprites.draw(self.display)
 
